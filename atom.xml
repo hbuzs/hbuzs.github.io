@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Hexo</title>
+  
+  
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2023-02-05T10:34:16.320Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>John Doe</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JWT攻击</title>
+    <link href="http://example.com/2023/02/05/JWT%E6%94%BB%E5%87%BB/"/>
+    <id>http://example.com/2023/02/05/JWT%E6%94%BB%E5%87%BB/</id>
+    <published>2023-02-05T07:39:44.000Z</published>
+    <updated>2023-02-05T10:34:16.320Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="JWT是什么"><a href="#JWT是什么" class="headerlink" title="JWT是什么"></a>JWT是什么</h1><p>JWT的全称是Json Web Token。它遵循JSON格式，将用户信息加密到token里，服务器不保存任何用户信息，只保存密钥信息，通过使用特定加密算法验证token，通过token验证用户身份。基于token的身份验证可以替代传统的cookie+session身份验证方法<br>官网：<a href="https://jwt.io/">jwt</a></p><h1 id="JWT构成"><a href="#JWT构成" class="headerlink" title="__JWT构成"></a>__JWT构成</h1><p>JWT一般由三段数据组成，用 . 分隔每段数据，类似于这样：<br><code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlhpYW8gU2h1YW5nIiwiaWF0IjoxNTE2MjM5MDIyfQ.VI3Sw0K6anPxdipgkfF0tqWWJcmcx-QaCN6Lh0x89Tw</code><br>第一部分我们称它为头部（header),第二部分我们称其为载荷（payload, 类似于飞机上承载的物品)，第三部分是签证（signature).  </p><h2 id="header（标头）"><a href="#header（标头）" class="headerlink" title="header（标头）"></a>header（标头）</h2><p>完整头部header类似这样：  </p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;alg&quot;: &quot;HS256&quot;,</span><br><span class="line">    &quot;typ&quot;: &quot;JWT&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li><p>声明加密算法</p></li><li><p>声明类型</p></li></ul><p>然后对其进行base64加密得到第一部分</p><h2 id="payload（载荷）"><a href="#payload（载荷）" class="headerlink" title="payload（载荷）"></a>payload（载荷）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;sub&quot;: &quot;1234567890&quot;,</span><br><span class="line">    &quot;name&quot;: &quot;Xiao Shuang&quot;,</span><br><span class="line">    &quot;iat&quot;: 1516239022</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>然后base64加密得到第二部分<br>载荷就是存放有效信息的地方。这个名字像是特指飞机上承载的货品，这些有效信息包含三个部分</p><ul><li><p>标准中注册的声明</p></li><li><p>公共的声明</p></li><li><p>私有的声明</p></li></ul><p><strong>标准中注册的声明:</strong></p><ul><li><p>iss:jwt签发者</p></li><li><p>sub:jwt所面向的用户</p></li><li><p>aud:接受jwt的一方</p></li><li><p>exp: jwt的过期时间，这个过期时间必须要大于签发时间</p></li><li><p>nbf: 定义在什么时间之前，该jwt都是不可用的</p></li><li><p>iat: jwt的签发时间</p></li><li><p>jti: jwt的唯一身份标识，主要用来作为一次性token,从而回避重放攻击</p></li></ul><p><strong>公共的声明:</strong><br>公共的声明可以添加任何的信息，一般添加用户的相关信息或其他业务需要的必要信息.但不建议添加敏感信息，因为该部分在客户端可解密  </p><p><strong>私有的声明:</strong><br>私有声明是提供者和消费者所共同定义的声明，一般不建议存放敏感信息，因为base64是对称解密的，意味着该部分信息可以归类为明文信息  </p><h2 id="signature（签名）"><a href="#signature（签名）" class="headerlink" title="signature（签名）"></a>signature（签名）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">HMACSHA256(</span><br><span class="line">    base64UrlEncode(header) + &quot;.&quot; +</span><br><span class="line">    base64UrlEncode(payload),</span><br><span class="line">    your-256-bit-secret</span><br><span class="line">) </span><br></pre></td></tr></table></figure><p>jwt的第三部分是一个签证信息，这个签证信息由三部分组成：</p><ul><li><p>header  (base64)</p></li><li><p>payload (base64)</p></li><li><p>secret</p></li></ul><p>这个部分需要base64加密后的header和base64加密后的payload使用.连接组成的字符串，然后通过header中声明的加密方式进行加盐secret组合加密，然后就构成了jwt的第三部分。secret是密钥，储存在cookie里。</p><h1 id="认证流程"><a href="#认证流程" class="headerlink" title="认证流程"></a>认证流程</h1><p><img src="/images/jwt1.jpg" alt="JWT" title="jwt认证"><br>用户登录成功之后，服务端给用户浏览器返回一个token，以后用户浏览器要携带token再去向服务端发送请求，服务端校验token的合法性，合法则给用户看数据，否则，返回一些错误信息。</p><h2 id="传统token方式和jwt在认证方面有什么差异？"><a href="#传统token方式和jwt在认证方面有什么差异？" class="headerlink" title="传统token方式和jwt在认证方面有什么差异？"></a>传统token方式和jwt在认证方面有什么差异？</h2><ul><li><p>传统token方式:<br>用户登录成功后，服务端生成一个随机token给用户，并且在服务端(数据库或缓存)中保存一份token，以后用户再来访问时需携带token，服务端接收到token之后，去数据库或缓存中进行校验token的是否超时、是否合法。</p></li><li><p>jwt方式：<br>用户登录成功后，服务端通过jwt生成一个随机token给用户（服务端无需保留token），以后用户再来访问时需携带token，服务端接收到token之后，通过jwt对token进行校验是否超时、是否合法。</p></li></ul><h1 id="攻击方法"><a href="#攻击方法" class="headerlink" title="攻击方法"></a>攻击方法</h1><ul><li><p><strong>签名加密算法</strong><br>  jwt是支持空签名加密算法的，即header中alg为none，这样的话，只要把signature设置为空（即不添加signature字段），即此时jwt为两端数据，而非三段，只要提交到服务器，任何token都可以通过服务器的验证。</p><p>  空加密算法的设计初衷是用于调试的，但是如果某天开发人员脑阔瓦特了(•_•)，在生产环境中开启了空加密算法，缺少签名算法，jwt保证信息不被篡改的功能就失效了。攻击者只需要把alg字段设置为None，就可以在payload中构造身份信息，伪造用户身份。</p></li><li><p>__将RS256算法改为HS256（非对称密码算法&#x3D;&gt;对称密码算法__）  </p><p>  RSA是非对称密码算法，用私钥pem加密发送给服务器端，服务器端再用公钥pub进行验证，由于私钥pem几乎是无法获取得知的，而pub是可以通过一些方法得到的。  </p><p>  HMAC是哈希运算消息认证码（Hash-based Message Authentication Code）的缩写，它是一种对称加密算法，使用相同的密钥对传输信息进行加解密。即客户端和服务端都用共同的密钥进行加密或者解密。  </p><p>  于是我们可以先利用RSA对jwt token进行签名发送给服务端，通过某些方式获取到公钥pub，再将RSA算法转换为HMAC算法，使用刚才获取到的pub作为HMAC的密钥进行JWT token的签名，即可完成用户身份伪造。</p></li><li><p><strong>若密钥爆破</strong><br>  凡是有密码，就可以有爆破，这取决于你的字典。<br>  在对jwt进行密钥爆破时一定在此情况下进行：</p><p>  1.已知签名算法</p><p>  2.一段有效的，已签名的token</p><p>  3.弱密钥</p></li></ul><p>这样很大的概率可以爆破出密钥，具体算法实现可参考：<a href="https://github.com/brendan-rius/c-jwt-cracker">c-jwt-cracker</a>  </p><ul><li><strong>修改kid参数</strong></li></ul><p>kid是jwt header中的一个可选参数，全称是key ID，它用于指定加密算法的密钥</p><p>由于该参数可以由用户修改，所以会造成相应的安全问题。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;alg&quot; : &quot;HS256&quot;,</span><br><span class="line">    &quot;typ&quot; : &quot;jwt&quot;,</span><br><span class="line">    &quot;kid&quot; : &quot;/home/jwt/.ssh/pem&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="1-任意文件读取"><a href="#1-任意文件读取" class="headerlink" title="1.任意文件读取"></a>1.任意文件读取</h2><p>kid参数用于读取密钥文件，但系统并不会知道用户想要读取的到底是不是密钥文件，所以，如果在没有对参数进行过滤的前提下，攻击者是可以读取到系统的任意文件的。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;alg&quot; : &quot;HS256&quot;,</span><br><span class="line">    &quot;typ&quot; : &quot;jwt&quot;,</span><br><span class="line">    &quot;kid&quot; : &quot;/etc/passwd&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="2-SQL注入"><a href="#2-SQL注入" class="headerlink" title="2.SQL注入"></a>2.SQL注入</h2><p>kid也可以从数据库中提取数据，这时候就有可能造成SQL注入攻击，通过构造SQL语句来获取数据或者是绕过signature的验证</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;alg&quot; : &quot;HS256&quot;,</span><br><span class="line">    &quot;typ&quot; : &quot;jwt&quot;,</span><br><span class="line">    &quot;kid&quot; : &quot;key11111111&#x27; || union select &#x27;secretkey&#x27; -- &quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="3-命令注入"><a href="#3-命令注入" class="headerlink" title="3.命令注入"></a>3.命令注入</h2><p>对kid参数过滤不严也可能会出现命令注入问题，但是利用条件比较苛刻。如果服务器后端使用的是Ruby，在读取密钥文件时使用了open函数，通过构造参数就可能造成命令注入。</p><p><code>&quot;/path/to/key_file|whoami&quot;</code></p><h2 id="4-信息泄露"><a href="#4-信息泄露" class="headerlink" title="4.信息泄露"></a>4.信息泄露</h2><p>JWT保证的是数据传输过程中的完整性而不是机密性。</p><p>由于payload是使用base64url编码的，所以相当于明文传输，如果在payload中携带了敏感信息（如存放密钥对的文件路径），单独对payload部分进行base64url解码，就可以读取到payload中携带的信息。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;JWT是什么&quot;&gt;&lt;a href=&quot;#JWT是什么&quot; class=&quot;headerlink&quot; title=&quot;JWT是什么&quot;&gt;&lt;/a&gt;JWT是什么&lt;/h1&gt;&lt;p&gt;JWT的全称是Json Web Token。它遵循JSON格式，将用户信息加密到token里，服务器不保存任</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://example.com/2023/01/30/hello-world/"/>
+    <id>http://example.com/2023/01/30/hello-world/</id>
+    <published>2023-01-30T07:52:09.038Z</published>
+    <updated>2023-01-30T07:52:09.038Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
