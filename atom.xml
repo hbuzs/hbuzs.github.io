@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-02-05T11:23:10.383Z</updated>
+  <updated>2023-02-07T13:31:20.054Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>培根密码</title>
+    <link href="http://example.com/2023/02/07/%E5%9F%B9%E6%A0%B9%E5%AF%86%E7%A0%81/"/>
+    <id>http://example.com/2023/02/07/%E5%9F%B9%E6%A0%B9%E5%AF%86%E7%A0%81/</id>
+    <published>2023-02-07T11:15:11.000Z</published>
+    <updated>2023-02-07T13:31:20.054Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="培根密码加密原理"><a href="#培根密码加密原理" class="headerlink" title="培根密码加密原理"></a>培根密码加密原理</h1><p>培根密码是一种简单的代替密码，只用 a与b 或者 大写与小写 或者 0与1 正体与 <em>斜体</em> 等等 <em>（只要是对立的两面元素都可以，不过大多数我们都使用a，b表示）</em> 来代替26个英文字母。如下：</p><table><thead><tr><th align="center">字母</th><th align="center">培根码</th></tr></thead><tbody><tr><td align="center">A&#x2F;a</td><td align="center">aaaaa</td></tr><tr><td align="center">B&#x2F;b</td><td align="center">aaaab</td></tr><tr><td align="center">C&#x2F;c</td><td align="center">aaaba</td></tr><tr><td align="center">D&#x2F;d</td><td align="center">aaabb</td></tr><tr><td align="center">E&#x2F;e</td><td align="center">aabaa</td></tr><tr><td align="center">F&#x2F;f</td><td align="center">aabab</td></tr><tr><td align="center">G&#x2F;g</td><td align="center">aabba</td></tr><tr><td align="center">H&#x2F;h</td><td align="center">aabbb</td></tr><tr><td align="center">I&#x2F;i</td><td align="center">abaaa</td></tr><tr><td align="center">J&#x2F;j</td><td align="center">abaab</td></tr><tr><td align="center">K&#x2F;k</td><td align="center">ababa</td></tr><tr><td align="center">L&#x2F;l</td><td align="center">ababb</td></tr><tr><td align="center">M&#x2F;m</td><td align="center">abbaa</td></tr><tr><td align="center">N&#x2F;n</td><td align="center">abbab</td></tr><tr><td align="center">O&#x2F;o</td><td align="center">abbba</td></tr><tr><td align="center">P&#x2F;p</td><td align="center">abbbb</td></tr><tr><td align="center">Q&#x2F;q</td><td align="center">baaaa</td></tr><tr><td align="center">R&#x2F;r</td><td align="center">baaab</td></tr><tr><td align="center">S&#x2F;s</td><td align="center">baaba</td></tr><tr><td align="center">T&#x2F;t</td><td align="center">baabb</td></tr><tr><td align="center">U&#x2F;u</td><td align="center">babaa</td></tr><tr><td align="center">V&#x2F;v</td><td align="center">babab</td></tr><tr><td align="center">W&#x2F;w</td><td align="center">babba</td></tr><tr><td align="center">X&#x2F;x</td><td align="center">babbb</td></tr><tr><td align="center">Y&#x2F;y</td><td align="center">bbaaa</td></tr><tr><td align="center">Z&#x2F;z</td><td align="center">bbaab</td></tr></tbody></table><p>这种加密方式类似二进制，从a(00000)依次＋1一直到z（11001，B26）.</p><p>比如 : </p><table><thead><tr><th align="center">S</th><th align="center">H</th><th align="center">U</th><th align="center">A</th><th align="center">N</th><th align="center">G</th></tr></thead><tbody><tr><td align="center">baaba</td><td align="center">aabbb</td><td align="center">babaa</td><td align="center">aaaaa</td><td align="center">abbab</td><td align="center">aabba</td></tr></tbody></table><p>另外，培根密码很多用作隐写<br>比如：</p><table><thead><tr><th align="center">源码</th><th align="center">按大小写，转换</th><th align="center">最后培根解码得到</th></tr></thead><tbody><tr><td align="center">I kNoW You Can COunT On ME.</td><td align="center">A BABA ABB ABB AABBA AB AA.</td><td align="center">LOVE</td></tr></tbody></table>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;培根密码加密原理&quot;&gt;&lt;a href=&quot;#培根密码加密原理&quot; class=&quot;headerlink&quot; title=&quot;培根密码加密原理&quot;&gt;&lt;/a&gt;培根密码加密原理&lt;/h1&gt;&lt;p&gt;培根密码是一种简单的代替密码，只用 a与b 或者 大写与小写 或者 0与1 正体与 &lt;em&gt;</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>JWT攻击</title>
