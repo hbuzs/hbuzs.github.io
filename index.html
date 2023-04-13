@@ -98,7 +98,73 @@
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
 </head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="/img/assets/cat.png"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">小爽</div><div class="profile-signature">起飞！起飞！起飞！</div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 70vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Lime</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Lime</h1><h5>心有猛虎，细嗅蔷薇</h5><div class="intro-social"><a class="fa fa-envelope" href="mailto:2694374951@qq.com" title="email"></a><a class="fa fa-github" href="//github.com/hbuzs/" target="_blank" title="github"></a><a class="fa fa-weibo" href="//www.weibo.com" target="_blank" title="weibo"></a><a class="fa fa-facebook" href="//www.facebook.com" target="_blank" title="facebook"></a><a class="fa fa-twitter" href="//twitter.com" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2023/02/07/%E5%9F%B9%E6%A0%B9%E5%AF%86%E7%A0%81/">培根密码</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2023-02-07T11:15:11.000Z">2023-02-07 19:15:11</time><i class="fa fa-edit"></i><time datetime="2023-02-07T11:15:11.000Z">2023-02-07 21:31:20</time></div><div class="recent-post-content">培根密码加密原理培根密码是一种简单的代替密码，只用 a与b 或者 大写与小写 或者 0与1 正体与 斜体 等等 （只要是对立的两面元素都可以，不过大多数我们都使用a，b表示） 来代替26个英文字母。如下：
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">小爽</div><div class="profile-signature">起飞！起飞！起飞！</div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 70vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Lime</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Lime</h1><h5>心有猛虎，细嗅蔷薇</h5><div class="intro-social"><a class="fa fa-envelope" href="mailto:2694374951@qq.com" title="email"></a><a class="fa fa-github" href="//github.com/hbuzs/" target="_blank" title="github"></a><a class="fa fa-weibo" href="//www.weibo.com" target="_blank" title="weibo"></a><a class="fa fa-facebook" href="//www.facebook.com" target="_blank" title="facebook"></a><a class="fa fa-twitter" href="//twitter.com" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2023/04/06/Apache%20HTTPD%20%E6%8D%A2%E8%A1%8C%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E%EF%BC%88CVE-2017-15715%EF%BC%89/">Apache HTTPD 换行解析漏洞（CVE-2017-15715）</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2023-04-06T14:23:41.000Z">2023-04-06 22:23:41</time><i class="fa fa-edit"></i><time datetime="2023-04-06T14:23:41.000Z">2023-04-13 21:32:35</time></div><div class="recent-post-content">0x00 漏洞简介
+Apache HTTPD是一款HTTP服务器，它可以通过mod_php来运行PHP网页。
+
+该漏洞是由于apache在解析 1.php%0a时被当作PHP文件解析，导致该文件可以绕过一些黑名单检测和安全组策略，在Apache 2.4.0~2.4.29版本中均可能存在该漏洞
+
+
+0x01 影响版本Apache 2.4.0~2.4.29
+0x02 漏洞复现Vulhub
+12docker-comepose --builddocker-comepose up -d
+
+进入页面
+上传文件
+抓包修改在evil.php后面加个任意字符，这里”@”
+在16进制处修改找到‘@’的16进制40 ...</div><div class="read-more"><a class="more" href="/2023/04/06/Apache%20HTTPD%20%E6%8D%A2%E8%A1%8C%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E%EF%BC%88CVE-2017-15715%EF%BC%89/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2023/04/01/Apache%E8%B7%AF%E5%BE%84%E7%A9%BF%E8%B6%8A%E6%BC%8F%E6%B4%9E(CVE-2021-41773)/">Apache 路径穿越漏洞(CVE-2021-41773,CVE-2021-42013)</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2023-04-01T14:53:21.000Z">2023-04-01 22:53:21</time><i class="fa fa-edit"></i><time datetime="2023-04-01T14:53:21.000Z">2023-04-12 20:35:58</time></div><div class="recent-post-content">CVE-2021-41773漏洞原理Apache httpd Server 2.4.49 版本引入了一个具有路径穿越漏洞的新函数，该函数设计存在逻辑问题，可以结合特点的输入绕过，但需要配合穿越的目录配置 Require all granted，攻击者可利用该漏洞实现路径穿越从而读取任意文件，或者在配置了cgi的httpd程序中执行bash指令，从而有机会控制服务器。
+漏洞满足需求:
+
+apache.version&#x3D;&#x3D;2.4.49
+
+&lt; Directory &#x2F;&gt;Require all granted&lt; &#x2F;Directory&gt;
+
+
+这 ...</div><div class="read-more"><a class="more" href="/2023/04/01/Apache%E8%B7%AF%E5%BE%84%E7%A9%BF%E8%B6%8A%E6%BC%8F%E6%B4%9E(CVE-2021-41773)/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2023/04/12/Nginx%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E/">Nginx解析漏洞</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2023-04-12T02:04:06.000Z">2023-04-12 10:04:06</time><i class="fa fa-edit"></i><time datetime="2023-04-12T02:04:06.000Z">2023-04-12 12:57:24</time></div><div class="recent-post-content">NginxNginx (engine x) 是一个高性能的HTTP和反向代理web服务器（web容器也叫中间件），同时也提供了IMAP&#x2F;POP3&#x2F;SMTP服务。
+HTTP方向代理，也就是客户端传来的数据先到达Nginx，经Nginx解析后再到达服务端
+
+漏洞成因该漏洞与Nginx,php的版本都无关是由于 Nginx配置不当导致的问题
+php.ini123456php.ini文件中 cgi.fix_pathinfo 的默认值是 1当php遇到文件路径/test.png/x.php时，若/test.png/x.php不存在，则会去掉最后的/x.php，然后判断/test.pn ...</div><div class="read-more"><a class="more" href="/2023/04/12/Nginx%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2023/04/02/Nginx%20%EF%BC%88CVE-2013-4547%EF%BC%89/">Nginx 文件名逻辑漏洞（CVE-2013-4547）</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2023-04-02T13:04:02.000Z">2023-04-02 21:04:02</time><i class="fa fa-edit"></i><time datetime="2023-04-02T13:04:02.000Z">2023-04-12 12:34:42</time></div><div class="recent-post-content">漏洞原理错误解析了请求的URI，导致错误的获取到用户上传的文件名，最后导致解析错误，出现权限绕过、代码执行的连带影响。
+
+相关知识
+
+CGI：是一种协议，定义了web服务器传递的数据格式。
+FastCGI：优化版的CGI程序
+PHP-CGI：PHP解释器，能够对PHP文件进行解析并返回相应的解析结果
+PHP-FPM：FastCGI进程管理程序
+当Nginx得到一个用户请求时，首先对url进行解析，进行正则匹配，如果匹配到以.php后缀结尾的文件名，会将请求的PHP文件交给PHP-CGI去解析。其中处理模块如下：
+12345678location ~ \.php$ &#123;    inclu ...</div><div class="read-more"><a class="more" href="/2023/04/02/Nginx%20%EF%BC%88CVE-2013-4547%EF%BC%89/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2023/04/11/%E8%93%9D%E5%88%9D%E7%99%BE%E9%A2%98%E6%96%A9/">蓝初百题斩</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2023-04-11T07:52:37.000Z">2023-04-11 15:52:37</time><i class="fa fa-edit"></i><time datetime="2023-04-11T07:52:37.000Z">2023-04-11 16:04:18</time></div><div class="recent-post-content">Windows 入侵排查思路？
+收集信息：收集与系统安全相关的信息，包括日志文件、进程列表、网络连接、系统配置等。
+
+分析信息：对收集到的信息进行分析，确定异常行为和潜在威胁。
+
+确认威胁：确认系统存在威胁，并确定其类型和程度。
+
+阻止攻击：采取相应的措施，尽快阻止攻击并减少损失。
+
+恢复系统：对受到攻击的系统进行恢复，确保其正常运行。
+
+
+具体来说，可以采取以下几种方法进行入侵排查：
+
+使用防病毒软件：定期使用防病毒软件扫描系统，及时发现并清除潜在的威胁。
+
+定期更新系统：定期更新系统和安全补丁，以确保系统的安全性。
+
+监控网络连接：监控网络连接情况，及时发现异常连接和流量，以及非法访问尝试 ...</div><div class="read-more"><a class="more" href="/2023/04/11/%E8%93%9D%E5%88%9D%E7%99%BE%E9%A2%98%E6%96%A9/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2023/04/10/Apache%20Airflow%20CVE-2020-17526/">Apache Airflow CVE-2020-17526</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2023-04-10T12:02:45.000Z">2023-04-10 20:02:45</time><i class="fa fa-edit"></i><time datetime="2023-04-10T12:02:45.000Z">2023-04-11 12:57:46</time></div><div class="recent-post-content">Apache AirflowApache-Airflow 是Airbnb开源的一款python编写的数据流程工具,它有一个基于Flask框架开发的Web应用，且用Flask 的无状态签名 cookie 来存储和管理成功的身份验证。
+Flask Cookie在 1.10.13 之前的版本中，Apache Airflow 使用默认会话 secert 密钥，这会导致在启用身份验证时模拟任意用户。
+一般来说，较为安全的session是经过加密的，用户端不可读的，但是在Flask中并非如此，它的cookie是由 session date，时间戳Timestamp，签名HMAC 组成的，以’.’分隔开来。 ...</div><div class="read-more"><a class="more" href="/2023/04/10/Apache%20Airflow%20CVE-2020-17526/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2023/03/01/SQL%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80/">SQL注入基础</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2023-03-01T07:19:36.000Z">2023-03-01 15:19:36</time><i class="fa fa-edit"></i><time datetime="2023-03-01T07:19:36.000Z">2023-03-02 20:10:55</time></div><div class="recent-post-content">几个常用数据库的特性  每一种数据库都有他的特性，这里简单介绍一些主流的数据库的特性，MySql,MSSql,Oracle,PostgreSql.
+MySql
+默认端口：3306
+
+字符串截取函数：SUBSTRING(‘String’, 4, 2)
+
+注释符：- - + 或者 #
+
+版本函数：select version(),或者 select @@version
+
+数据库内容查询：
+  12SELECT * FROM information_schema.tablesSELECT * FROM information_schema.columns WHERE table_name = &#x ...</div><div class="read-more"><a class="more" href="/2023/03/01/SQL%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2023/02/18/%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81/">古典密码</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2023-02-18T01:30:20.000Z">2023-02-18 09:30:20</time><i class="fa fa-edit"></i><time datetime="2023-02-18T01:30:20.000Z">2023-02-18 10:18:08</time></div><div class="recent-post-content">置换密码置换密码又称为移位密码，即把明文中的字母重新排列，字母本身不变，只是位置变了 
+</div><div class="read-more"><a class="more" href="/2023/02/18/%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2023/02/07/%E5%9F%B9%E6%A0%B9%E5%AF%86%E7%A0%81/">培根密码</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2023-02-07T11:15:11.000Z">2023-02-07 19:15:11</time><i class="fa fa-edit"></i><time datetime="2023-02-07T11:15:11.000Z">2023-02-07 21:47:23</time></div><div class="recent-post-content">培根密码加密原理培根密码是一种简单的代替密码，只用 a与b 或者 大写与小写 或者 0与1 正体与 斜体 等等 （只要是对立的两面元素都可以，不过大多数我们都使用a，b表示） 来代替26个英文字母。如下：
 
 
 
@@ -148,9 +214,5 @@ abaab
 
 
 K&#x2F;k
-ababa ...</div><div class="read-more"><a class="more" href="/2023/02/07/%E5%9F%B9%E6%A0%B9%E5%AF%86%E7%A0%81/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2023/02/05/JWT%E6%94%BB%E5%87%BB/">JWT攻击</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2023-02-05T07:39:44.000Z">2023-02-05 15:39:44</time><i class="fa fa-edit"></i><time datetime="2023-02-05T07:39:44.000Z">2023-02-05 19:23:10</time></div><div class="recent-post-content">JWT是什么JWT的全称是Json Web Token。它遵循JSON格式，将用户信息加密到token里，服务器不保存任何用户信息，只保存密钥信息，通过使用特定加密算法验证token，通过token验证用户身份。基于token的身份验证可以替代传统的cookie+session身份验证方法官网：jwt
-JWT构成JWT一般由三段数据组成，用 . 分隔每段数据，类似于这样：eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlhpYW8gU2h1YW5nIiwiaWF0IjoxNTE2MjM5MDIy ...</div><div class="read-more"><a class="more" href="/2023/02/05/JWT%E6%94%BB%E5%87%BB/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2023/01/30/hello-world/">Hello World</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2023-01-30T07:52:09.038Z">2023-01-30 15:52:09</time><i class="fa fa-edit"></i><time datetime="2023-01-30T07:52:09.038Z">2023-01-30 15:52:09</time></div><div class="recent-post-content">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;
-
-More info: Writing
-Run server1$ hexo ser ...</div><div class="read-more"><a class="more" href="/2023/01/30/hello-world/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><span class="page-number current">1</span></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a target="_blank" rel="noopener" href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+ababa ...</div><div class="read-more"><a class="more" href="/2023/02/07/%E5%9F%B9%E6%A0%B9%E5%AF%86%E7%A0%81/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2023/02/05/JWT%E6%94%BB%E5%87%BB/">JWT攻击</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2023-02-05T07:39:44.000Z">2023-02-05 15:39:44</time><i class="fa fa-edit"></i><time datetime="2023-02-05T07:39:44.000Z">2023-02-07 21:42:25</time></div><div class="recent-post-content">JWT是什么JWT的全称是Json Web Token。它遵循JSON格式，将用户信息加密到token里，服务器不保存任何用户信息，只保存密钥信息，通过使用特定加密算法验证token，通过token验证用户身份。基于token的身份验证可以替代传统的cookie+session身份验证方法官网：jwt
+JWT构成JWT一般由三段数据组成，用 . 分隔每段数据，类似于这样：eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlhpYW8gU2h1YW5nIiwiaWF0IjoxNTE2MjM5MDIy ...</div><div class="read-more"><a class="more" href="/2023/02/05/JWT%E6%94%BB%E5%87%BB/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">NEXT &amp;#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a target="_blank" rel="noopener" href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
